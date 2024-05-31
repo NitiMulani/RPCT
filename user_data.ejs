@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #16222a, #3a6073); /* Gradient background */
+            font-family: 'Raleway', cursive;
+            color: #fff;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        .form-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        form {
+            width: 600px; /* Adjusted width of the form */
+            transition: all 0.3s ease-in-out; /* For smooth transition */
+            background-color: rgba(255, 255, 255, 0.3); /* Transparent white background color for the form */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1); /* Box shadow for a subtle effect */
+            text-align: center; /* Center-align text within the form */
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px; /* Increased margin between labels */
+            font-size: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 2%;
+            font-weight: bolder;
+            color: rgb(42, 41, 41);
+        }
+
+        input[type="text"],
+        select {
+            width: calc(50% - 12px); /* Adjusted width for text input and select dropdown */
+            margin: 0 6px; /* Margin to create space between elements */
+            height: 40px; /* Increase height of text box and select dropdown */
+            padding: 0 10px; /* Add padding */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #ccc; /* Border color */
+            background-color: #fff; /* White background */
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(135deg, #16222a, #3a6073); /* Gradient background */
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: all 0.3s ease-in-out;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            opacity: 0.8;
+        }
+
+        table-container {
+            width: 100%;
+            overflow-x: auto; /* Allow horizontal scroll */
+        }
+
+        table {
+            width: 100%; /* Adjusted width to fit content */
+            border-collapse: collapse;
+            margin-top: 20px;
+            border: 2px solid #fff; /* Border styling for the table */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        th, td {
+            border: 1px solid #fff;
+            padding: 8px;
+            text-align: center; /* Center-align table content */
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        th {
+            background-color: #16222a;
+            color: #fff;
+        }
+
+        td {
+            background-color: #3a6073;
+            color: #fff;
+        }
+
+        button {
+            background-color: green;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <h2>Remote Packet Capture tool (RPCT)</h2>
+    <div class="form-container">
+        <form id="capture_form" action="/capture" method="post">
+            <label for="ip_address">IP Address:</label>
+            <input type="text" id="ip_address" name="ip_address" placeholder="Enter IP Address" required><br>
+
+            <label for="duration">Duration:</label>
+            <select id="duration" name="duration" required>
+                <option value="" disabled selected>Select Duration</option>
+                <option value="20">20 seconds</option>
+                <option value="30">30 seconds</option>
+                <option value="60">1 minute</option>
+                <option value="120">2 minutes</option>
+                <option value="300">5 minutes</option>
+                <option value="600">10 minutes</option>
+                <option value="900">15 minutes</option>
+                <option value="1800">30 minutes</option>
+            </select><br>
+
+            <label for="network_interface">Network Interface:</label>
+            <select id="network_interface" name="network_interface" required>
+                <option value="" disabled selected>Select Network Interface</option>
+                <option value="eno1">eno1</option>
+                <option value="enp2s0">enp2s0</option>
+                <option value="lo">lo</option>
+                <option value="wlp0s20f3">wlp0s20f3</option>
+            </select><br><br>
+
+            <input type="submit" id="start_capture" value="Start">
+        </form>
+    </div>
+
+    <% if (captures.length > 0) { %>
+    <table-container>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr NO</th>
+                    <th>IP Address</th>
+                    <th>Duration</th>
+                    <th>Network Interface</th>
+                    <th>Packet count</th>
+                    <th>Status</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i = 0; i < captures.length; i++) { %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= captures[i].ip_address %></td>
+                    <td><%= captures[i].duration %> seconds</td>
+                    <td><%= captures[i].network_interface %></td>
+                    <td><%= captures[i].packet_count %></td>
+                    <td><%= captures[i].status %></td>
+                    <td>
+                        <button style="background-color: green;">View</button>
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </table-container>
+    <% } %>
+
+    <script>
+        // Your JavaScript code here
+        const updateCapturesTable = () => {
+            fetch('/captures-data')
+                .then(response => response.json())
+                .then(data => {
+                    const captures = data.captures;
+                    let tableHTML = '<table>';
+                    tableHTML += '<thead><tr><th>Sr NO</th><th>IP Address</th><th>Duration</th><th>Network Interface</th><th>Packet count</th><th>Status</th><th>Options</th></tr></thead>';
+                    tableHTML += '<tbody>';
+                    captures.forEach((capture, index) => {
+                        tableHTML += `<tr><td>${index + 1}</td><td>${capture.ip_address}</td><td>${capture.duration} seconds</td><td>${capture.network_interface}</td><td>${capture.packet_count}</td><td>${capture.status}</td><td><button style="background-color: green;">View</button></td></tr>`;
+                    });
+                    tableHTML += '</tbody></table>';
+
+                    // Update the captures table container with the new table HTML
+                    document.getElementById('captures-table-container').innerHTML = tableHTML;
+                })
+                .catch(error => console.error('Error fetching captures data:', error));
+        };
+
+        // Function to update captures table every 5 seconds
+        const updateTableInterval = setInterval(updateCapturesTable, 5000);
+
+        // Call the updateCapturesTable function initially to populate the table
+        updateCapturesTable();
+
+        // Stop the interval when leaving the page to avoid memory leaks
+        window.addEventListener('beforeunload', () => {
+            clearInterval(updateTableInterval);
+        });
+    </script>
+</body>
+</html>

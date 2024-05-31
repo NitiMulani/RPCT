@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Major</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Satisfy&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
+</head>
+
+<body>
+  <!-- Navbar Section -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="#home" id="navbar__logo">RPCT</a>
+      <div class="navbar__toggle" id="mobile-menu">
+        <span class="bar"></span> <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="navbar__menu">
+        <li class="navbar__item">
+          <a href="#home" class="navbar__links" id="home-page">Home</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#about" class="navbar__links" id="about-page">About</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#services" class="navbar__links" id="services-page">Guide</a>
+        </li>
+        <li class="navbar__btn">
+          <a href="#sign-up" class="button" id="container">Sign In</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <video autoplay muted loop id="background-video">
+    <source src="video1.mp4" type="video/mp4">
+    <!-- Add additional video sources for different formats if needed -->
+  </video>
+  <div class="overlay"></div>
+  <div class="hero" id="home">
+    <div class="hero__container">
+      <h1 class="hero__heading">Welcome to RPCT!</h1>
+      <p class="hero__description">Capture anywhere, Anaylse Everywhere</p>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="main" id="about">
+    <div class="main__container">
+      <div class="main__img--container">
+        <div class="main__img--card">
+          <div class="main__content">
+            <h1>About RPCT</h1>
+            <p>
+              Introducing our cutting-edge Remote Packet Capture Tool, powered by the formidable TShark technology. With unparalleled efficiency and precision, our tool empowers network administrators and security professionals to remotely capture and analyze network traffic with ease. TShark, renowned for its robust packet capturing capabilities, seamlessly integrates into our solution, delivering real-time insights into network activity. Whether it's monitoring for anomalies, troubleshooting network issues, or conducting in-depth security analysis, our tool stands as the ultimate ally. Say goodbye to cumbersome on-site packet capture setups. Embrace the freedom of remote packet capture, revolutionizing the way you manage and secure your network infrastructure.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services" id="services">
+    <h1>How to use?</h1>
+    <div class="services__wrapper">
+      <div class="services__card">
+        <h2>◉ Sign In</h2>
+        <p>Sign In with the valid credentials to start the packet capture</p>
+        <!--<div class="services__btn"><button>Get Started</button></div>-->
+      </div>
+      <div class="services__card">
+        <h2>◉ Start Packet Capture</h2>
+        <p>Go to packet capture window and enter the required details to start the packet capture</p>
+        <!--<div class="services__btn"><button>Get Started</button></div>-->
+      </div>
+      <div class="services__card">
+        <h2>◉ View / Download the captures</h2>
+        <p>Click on the view tab to view the packets captured and download button to download the captures</p>
+        <!--<div class="services__btn"><button>Get Started</button></div>-->
+      </div>
+      <div class="services__card">
+        <h2>◉ Analyse Anytime</h2>
+        <p>Go to the RPCT to view the past captures and anaylse them</p>
+        <!--<div class="services__btn"><button>Get Started</button></div>-->
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section 
+  <div class="main" id="sign-up">
+    <div class="main__container">
+      <div class="main__content">
+        <h1>Join Our Team</h1>
+        <h2>Sign Up Today</h2>
+        <p>See what makes us different</p>
+        <button class="main__btn"><a href="#">Sign Up</a></button>
+      </div>
+      <div class="main__img--container">
+        <div class="main__img--card" id="card-2">
+          <i class="fas fa-users"></i>
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+  <div class="main" id="sign-up">
+    <div class="container"> 
+      <div class="form-container sign-in">
+        <form id="loginForm" action="/signin" method="POST">
+          <h1>Sign In</h1>
+          <input type="text" name="username" id="username" placeholder="Username">
+          <input type="password" name="password" id="password" placeholder="Password">
+          <button type="submit">Sign in</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- Footer Section -->
+  <div class="footer__container">
+    <div class="footer__links">
+      <div class="footer__link--wrapper">
+        <div class="footer__link--items">
+          <h2>About Us</h2>
+          <a href="/sign__up">How it works</a> <a href="/">Testimonials</a>
+          <a href="/">Careers</a> <a href="/">Terms of Service</a>
+        </div>
+        <div class="footer__link--items">
+          <h2>Contact Us</h2>
+          <a href="/">Contact</a> <a href="/">Support</a>
+          
+        </div>
+      </div>
+      <div class="footer__link--wrapper">
+        <div class="footer__link--items">
+          <h2>Videos</h2>
+          <a href="/">Submit Video</a> <a href="/">Ambassadors</a>
+          <a href="/">Agency</a>
+        </div>
+        <div class="footer__link--items">
+          <h2>Social Media</h2>
+          <a href="/">Instagram</a> <a href="/">Facebook</a>
+          <a href="/">Youtube</a> <a href="/">Twitter</a>
+        </div>
+      </div>
+    </div>
+    <section class="social__media">
+      <div class="social__media--wrap">
+        <div class="footer__logo">
+          <a href="/" id="footer__logo">RPCT</a>
+        </div>
+        <p class="website__rights">© RPCT 2020. All rights reserved</p>
+        <div class="social__icons">
+          <a href="/" class="social__icon--link" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="/" class="social__icon--link"><i class="fab fa-instagram"></i></a>
+          <a href="/" class="social__icon--link"><i class="fab fa-youtube"></i></a>
+          <a href="/" class="social__icon--link"><i class="fab fa-linkedin"></i></a>
+          <a href="/" class="social__icon--link"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+
+</html>
